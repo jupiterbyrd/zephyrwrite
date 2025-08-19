@@ -1,0 +1,53 @@
+body {
+    font-family: system-ui, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    background: black;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  
+  button:hover {
+    background: #444;
+  }
+  
+  button:disabled {
+    background: #999;
+    cursor: not-allowed;
+  }
+  
+  .stats {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  img {
+    width: 100px;
+    height: auto;
+  }
+  
