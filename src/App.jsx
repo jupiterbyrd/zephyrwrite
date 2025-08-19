@@ -11,8 +11,8 @@ function App() {
 
   async function handleRefresh() {
     setLoading(true);
-    const pageID = '24e869932d5e80dcaeebfae91c144ef8';
-    const text = await fetchNotionText(pageID);
+   
+    const text = await fetchNotionText();
     console.log(text);
     const metrics = getReadabilityStats(text);
     setStats(metrics);
