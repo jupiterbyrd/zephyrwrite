@@ -13,8 +13,9 @@ function App() {
     setLoading(true);
    
     const text = await fetchNotionText("254869932d5e800daf03f51aaca5c36a");
-    console.log(text);
+   
     const metrics = getReadabilityStats(text);
+    //const metrics = getReadabilityStats("")
     setStats(metrics);
     setLoading(false);
   }

@@ -47,6 +47,7 @@ function getGradeComment(grade) {
 
 // Main stats
 export function getReadabilityStats(text) {
+  text = getParagraphs(text);
   const paragraphs = text.split(/\n{2,}/).filter((p) => p.trim().length > 0);
   const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
   const words = text
@@ -97,4 +98,26 @@ export function getReadabilityStats(text) {
     gradeComment: getGradeComment(gradeLevel),
     sentiment,
   };
+}
+
+function getParagraphs(text) {
+  const resultsArr = text.results;
+
+  let paragraph = "";
+
+  for (let i = 0; i < resultsArr.length; i++) {
+    let block = resultsArr[i];
+    if (block.type == "paragraph") {
+      const contents = block.paragraph.rich_text;
+      for (let j = 0; j < contents.length; j++) {
+        const item = contents[j];
+        if (item.type == "text") {
+          paragraph = paragraph + item.plain_text + "\n";
+          console.log(paragraph);
+        }
+      }
+    }
+  }
+
+  return paragraph;
 }
