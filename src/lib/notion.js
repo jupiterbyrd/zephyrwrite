@@ -1,5 +1,5 @@
-export async function fetchNotionText(pageId) {
-  const res = await fetch(`/api/notion?pageId=${pageId}`);
+export async function fetchNotionText() {
+  const res = await fetch(`/api/notion`);
 
   return await res.json();
 }
