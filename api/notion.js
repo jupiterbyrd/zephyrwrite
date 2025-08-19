@@ -7,8 +7,8 @@ export default async function handler(req, res) {
 
     const pageId = req.query.pageId;
 
-    const page = await notion.pages.retrieve({ page_id: pageId });
-    console.log(page);
+    /* const page = await notion.pages.retrieve({ page_id: pageId });
+    console.log(page);*/
     const response = await notion.blocks.children.list({
       block_id: pageId,
     });
