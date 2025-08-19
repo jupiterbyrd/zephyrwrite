@@ -12,7 +12,7 @@ function App() {
   async function handleRefresh() {
     setLoading(true);
    
-    const text = await fetchNotionText();
+    const text = await fetchNotionText("24e869932d5e80dcaeebfae91c144ef8");
     console.log(text);
     const metrics = getReadabilityStats(text);
     setStats(metrics);
