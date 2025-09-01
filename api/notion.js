@@ -9,7 +9,7 @@ const databaseId = process.env.NOTION_DATABASE_ID;
 export default async function handler(req, res) {
   try {
     const { type, pageId } = req.query;
-
+    console.log(req);
     if (type === "articles") {
       // Fetch all pages in the database
       const response = await notion.databases.retrieve({

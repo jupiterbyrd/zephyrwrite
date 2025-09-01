@@ -4,7 +4,6 @@ import { getArticles, getPageContent } from "./lib/notion.js";
 import { analyzeText } from "./lib/readability.js";
 import ArticleMenu from "./components/ArticleMenu.jsx";
 import StatsDisplay from "./components/StatsDisplay.jsx";
-import { sortUserPlugins } from "vite";
 
 export default function App() {
   const [articles, setArticles] = useState([]);
