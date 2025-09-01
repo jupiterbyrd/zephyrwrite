@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./styles/styles.css";
-
-import React, { useEffect, useState } from "react";
 import { getArticles, getPageContent } from "./lib/notion.js";
 import { analyzeText } from "./lib/readability.js";
 import ArticleMenu from "./components/ArticleMenu.jsx";
