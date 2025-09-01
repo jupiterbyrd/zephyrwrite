@@ -18,7 +18,8 @@ export default function App() {
     loadArticles();
   }, []);
 
-  async function analyzePage(pageId) {
+  async function analyzePage() {
+    const pageId = process.env.NOTION_DATABASE_ID;
     const content = await getPageContent(pageId);
     const analysis = analyzeText(content);
     setStats(analysis);
