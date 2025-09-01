@@ -1,34 +1,40 @@
 import React, { useState } from "react";
-import RefreshButton from "./components/RefreshButton";
-import StatsCard from "./components/StatsCard";
-import { fetchNotionText } from "./lib/notion";
-import { getReadabilityStats } from "./lib/readability";
 import "./styles/styles.css";
 
-function App() {
-  const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(false);
+import React, { useEffect, useState } from "react";
+import { getArticles, getPageContent } from "./lib/notion.js";
+import { analyzeText } from "./lib/readability.js";
+import ArticleMenu from "./components/ArticleMenu.jsx";
+import StatsDisplay from "./components/StatsDisplay.jsx";
 
-  async function handleRefresh() {
-    setLoading(true);
-   
-    const text = await fetchNotionText("254869932d5e800daf03f51aaca5c36a");
-   
-    const metrics = getReadabilityStats(text);
-    //const metrics = getReadabilityStats("")
-    setStats(metrics);
-    setLoading(false);
+export default function App() {
+  const [articles, setArticles] = useState([]);
+  const [stats, setStats] = useState(null);
+  const [currentPageId, setCurrentPageId] = useState(null);
+
+  useEffect(() => {
+    async function loadArticles() {
+      const all = await getArticles();
+      setArticles(all);
+    }
+    loadArticles();
+  }, []);
+
+  async function analyzePage(pageId) {
+    const content = await getPageContent(pageId);
+    const analysis = analyzeText(content);
+    setStats(analysis);
+    setCurrentPageId(pageId);
+  }
+
+  async function refreshStats(pageId) {
+    await analyzePage(pageId);
   }
 
   return (
-    <div className="container">
-        <img src="zephyrwrite.jpg"/>
-      <h1>ZephrWrite</h1>
-      <RefreshButton onClick={handleRefresh} loading={loading} />
-      {stats && <StatsCard stats={stats} />}
+    <div className="app-container">
+      <ArticleMenu articles={articles} onSelect={analyzePage} />
+      <StatsDisplay stats={stats} pageId={currentPageId} onRefresh={refreshStats} />
     </div>
   );
 }
-
-
-export default App

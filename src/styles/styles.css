@@ -50,4 +50,35 @@ body {
     width: 100px;
     height: auto;
   }
+
+  .stats-card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-left: 20px;
+    background: #fdfdfd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex: 1;
+  }
+  
+  .stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .refresh-button {
+    background: #0077ff;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .refresh-button:hover {
+    background: #005fcc;
+  }
+  
   
