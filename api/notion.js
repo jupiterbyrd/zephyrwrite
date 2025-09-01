@@ -12,9 +12,10 @@ export default async function handler(req, res) {
 
     if (type === "articles") {
       // Fetch all pages in the database
-      const response = await notion.databases.query({
+      const response = await notion.databases.retrieve({
         database_id: databaseId,
       });
+      console.log(response);
 
       const articles = response.results.map((page) => ({
         id: page.id,

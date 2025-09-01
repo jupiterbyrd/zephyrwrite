@@ -4,6 +4,7 @@ import { getArticles, getPageContent } from "./lib/notion.js";
 import { analyzeText } from "./lib/readability.js";
 import ArticleMenu from "./components/ArticleMenu.jsx";
 import StatsDisplay from "./components/StatsDisplay.jsx";
+import { sortUserPlugins } from "vite";
 
 export default function App() {
   const [articles, setArticles] = useState([]);
@@ -20,7 +21,9 @@ export default function App() {
 
   async function analyzePage() {
     const pageId = process.env.NOTION_DATABASE_ID;
+    console.log(process.env.NOTION_DATABASE_ID);
     const content = await getPageContent(pageId);
+    console.log(content);
     const analysis = analyzeText(content);
     setStats(analysis);
     setCurrentPageId(pageId);
